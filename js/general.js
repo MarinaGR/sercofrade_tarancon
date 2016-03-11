@@ -3,7 +3,7 @@
 var now = new Date().getTime();
 
 //OJO CAMBIAR ESTO Y CONFIG
-var extern_siteurl_notif="http://semanasantasercastillalamancha.com/tarancon";
+var extern_siteurl_notif="http://semanasantasercastillalamancha.com/tarancon/";
 var extern_siteurl=extern_siteurl_notif+"index.html?app=mobile&app_ios=mobile&flag="+now; 
 var extern_siteurl_op=extern_siteurl_notif+"server/functions/api.php";
 
@@ -13,12 +13,10 @@ if(typeof provincia_cargada == "undefined"  || provincia_cargada==null)
 {
 	provincia_cargada="tarancon";
 }
+var extern_siteurl='http://semanasantasercastillalamancha.com/'+provincia_cargada;
 */
 
-var extern_siteurl='http://semanasantasercastillalamancha.com/'+provincia_cargada;
-
 var extern_web=extern_siteurl+'/server/publicidad/load_adpage.php?anuncio=';
-
 
 
 //Get the screen and viewport size
@@ -61,9 +59,9 @@ function onDeviceReady()
 	var start_session=getSessionStorage("start_session"); 
 	if(typeof start_session == "undefined" || start_session==null)	
 	{	
-		var nueva_fecha=parseInt(getLocalStorage("fecha"))+1000*60*60*24*15; //15 días
+		var nueva_fecha=parseInt(getLocalStorage("fecha"))+1000*60*60*24*2; //2 días
 		
-		if(now>nueva_fecha) //cada 15 días limpia cache
+		if(now>nueva_fecha) //cada 2 días limpia cache
 		{
 			window.cache.clear(function(status) {}, function(status) {});
 			setLocalStorage("fecha", now);
